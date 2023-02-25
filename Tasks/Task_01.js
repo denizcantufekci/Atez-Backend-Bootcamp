@@ -1,33 +1,35 @@
-function addNumbers(...args){
-    let result = 0;
-    for (let arg of args) result += arg;
-    return result;
-}
 
-function printArguments(...args){
-    args.forEach(arg => console.log(arg))
-}
+ /*
+    Task 1:
+    Faktoriyel hesabı yapan bir fonksiyon yazın.
+    Ipucu: Fonksiyona 3 verildiği zaman sonucun 6 olarak dönmesi beklenir.
+    Ama String bir değer verilirse bir hata bilgisi paylaşılması lazım.
+    Bunun varyasyonları ile düşünüp başka koşullarda ne dönmesi gerekir, kontrolleri sağlamanız bekleniyor.
+ */
 
-function sumOfAnyArgs(...args){
-    let result = "";
-    args.forEach((arg) => result += arg);
-    return console.log(result);
-}
-
-function sumOfNumberArgs(...args){
-    let result = 0;
-    const numbers = args.filter((arg) => typeof arg==="number");
-    numbers.forEach((number) => result += number);
-    return console.log(result);
-}
-
-console.log(addNumbers(1,2,3,4,5));
-console.log("-------------------");
-printArguments(42,'atez', true, {name: 'Deniz', surname: 'Can'}, [1,2,3]);
-printArguments(1,2,3,4,5);
-console.log("-------------------");
-sumOfAnyArgs(42,'atez', true, {name: 'Deniz', surname: 'Can'}, [1,2,3]);
-sumOfAnyArgs(1,2,3,4,5);
-console.log("-------------------");
-sumOfNumberArgs(42,'atez',500,true,50,{name: 'Deniz', surname: 'Can'},-100,[1,2,3],0);
-sumOfNumberArgs(1,2,3,4,5);
+const calcFactorial = (num) => {
+    if (typeof num === "number" && num >= 0 && !isNaN(num) && num !== Infinity ) {
+        if(num === 0) return 1;
+        return num * calcFactorial(num - 1);
+    }
+    return "Please enter zero or a positive number!";
+};
+console.log(calcFactorial());
+console.log(calcFactorial(-1));
+console.log(calcFactorial(-0));
+console.log(calcFactorial(0));
+console.log(calcFactorial(3));
+console.log(calcFactorial(5));
+console.log(calcFactorial("5"));
+console.log(calcFactorial(true));
+console.log(calcFactorial(false));
+console.log(calcFactorial({name: 'x', surname: 'y'}));
+console.log(calcFactorial([1,2,3]));
+console.log(calcFactorial(NaN));
+console.log(calcFactorial(null));
+console.log(calcFactorial(undefined));
+console.log(calcFactorial(Infinity));
+console.log(calcFactorial(-Infinity));
+console.log(calcFactorial(1/0));
+console.log(calcFactorial(1/-0));
+console.log(calcFactorial(0/0));
